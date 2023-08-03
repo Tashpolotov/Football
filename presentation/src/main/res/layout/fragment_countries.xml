@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.CountriesFragment"
-    android:background="@drawable/backround4">
+    android:background="@color/backround"
+    >
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rv_country"

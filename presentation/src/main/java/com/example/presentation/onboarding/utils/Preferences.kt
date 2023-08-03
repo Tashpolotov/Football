@@ -6,13 +6,16 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class Preferences @Inject constructor(@ApplicationContext context: Context) {
-    private val sharedPref: SharedPreferences = context.getSharedPreferences("presences",
+    private val sharedPref: SharedPreferences = context.getSharedPreferences(
+        "preferences",
         Context.MODE_PRIVATE
     )
-    fun isBoardingShowed():Boolean{
-        return sharedPref.getBoolean("board",false)
+
+    fun isBoardingShowed(): Boolean {
+        return sharedPref.getBoolean("boarding_showed", false)
     }
-    fun setBoardingShowed(isSnow:Boolean){
-        sharedPref.edit().putBoolean("board",isSnow).apply()
+
+    fun setBoardingShowed(isShown: Boolean) {
+        sharedPref.edit().putBoolean("boarding_showed", isShown).apply()
     }
 }

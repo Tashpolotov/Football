@@ -14,20 +14,17 @@ class OnBoardAdapter(@ApplicationContext fragment: FragmentActivity): FragmentSt
         OnBoardModel(
             "Приложение о футболле",
             R.drawable.football,
-            "Добро пожаловать в наше приложение",
-            false
+            "Добро пожаловать в наше приложение"
         ),
         OnBoardModel(
             "Здесь вы можете найти всю информацию о командах выбрав страну ",
             R.drawable.footbaall1,
             "",
-            false
         ),
         OnBoardModel(
             "А также всю информаци о любимых ваших игроках",
             R.drawable.fottball3,
             "и информация о всех клубах",
-            true
         )
     )
     override fun getItemCount(): Int = listBoarding.size

@@ -38,13 +38,6 @@ class OnBoardingFragment : Fragment() {
             binding.tvStazam.text = data.title
             binding.tvTitleBoard.text = data.titleText
             data.img?.let { it1 -> binding.imgBoard.setImageResource(it1) }
-            binding.btnGetStarted.isVisible = data.isLast == true
-
-            if (data.isLast == false) {
-                data.bg?.let { it1 -> binding.container.setBackgroundResource(it1) }
-            } else {
-                data.bg?.let { it1 -> binding.container.setBackgroundResource(it1) }
-            }
         }
         binding.btnGetStarted.setOnClickListener {
             val fragmentManager = requireFragmentManager()

@@ -11,26 +11,39 @@ import com.example.presentation.onboarding.OnPageFragment
 import com.example.presentation.onboarding.utils.Preferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-    @Inject lateinit var preferences: Preferences
+
+    @Inject
+    lateinit var preferences: Preferences
+
     private lateinit var onBoardingCompletedKey: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onBoardingCompletedKey = "onBoardingCompleted"
+        preferences.setBoardingShowed(false)
 
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!preferences.isBoardingShowed()){
-            supportFragmentManager.beginTransaction().add(R.id.fr_container, OnPageFragment()).commit()
-
-        }else{
-            supportFragmentManager.beginTransaction().add(R.id.fr_container, CountriesFragment()).commit()
+        if (savedInstanceState == null) {
+            if (!preferences.isBoardingShowed()) {
+                supportFragmentManager.beginTransaction().add(R.id.fr_container, OnPageFragment()).commit()
+            } else {
+                supportFragmentManager.beginTransaction().add(R.id.fr_container, CountriesFragment()).commit()
+            }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(onBoardingCompletedKey, preferences.isBoardingShowed())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        preferences.setBoardingShowed(savedInstanceState.getBoolean(onBoardingCompletedKey, false))
     }
 }

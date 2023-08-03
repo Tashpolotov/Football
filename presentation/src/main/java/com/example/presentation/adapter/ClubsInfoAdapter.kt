@@ -15,13 +15,25 @@ class ClubsInfoAdapter(private val onItemClick: (ClubDetailModel) -> Unit):ListA
             binding.tvCountry.text = "Страна: ${model.country}"
             binding.tvNameClub.text = "Название клуба: ${model.name}"
             binding.tvStadium.text = "Название стадиона: ${model.stadium}"
-            binding.tvPlayers.text = "${model.players} : Игрока в команде"
+            binding.tvPlayers.text = "${model.players} : Игрока в команде" +
+                    " Если хотите посмотреть информацию об игроках нажмите сюда"
             Glide.with(binding.root)
                 .load(model.img)
                 .into(binding.imgAvatar)
             Glide.with(binding.root)
                 .load(model.stadiumImg)
                 .into(binding.imgStadium)
+            binding.tvClubBurn.text = "клуб основан: ${model.clubBurn}"
+            binding.tvCoachName.text = "Тренер клуба: ${model.couchClub}"
+            binding.tvStadiumPeople.text = "Вместимость стадиона: ${model.stadiumPeople}"
+            binding.tvMutchCup.text = "Выигранные трофеи со дня основания клуба: ${model.muchCup}"
+            binding.tvApl.text = "${model.muchAplCup} : раз клуб выигрывал Премьер лигу"
+            binding.tvLigaChampions.text = "${model.muchLigaChampoinsCup} : раз клуб выигрывал Лигу чемпионов"
+            Glide.with(binding.root)
+                .load(model.imgCouch)
+                .into(binding.imgCoach)
+
+
             binding.tvPlayers.setOnClickListener {
                 onItemClick(model)
             }

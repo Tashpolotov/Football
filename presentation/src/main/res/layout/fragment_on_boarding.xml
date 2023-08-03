@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".onboarding.OnBoardingFragment"
-    android:id="@+id/container">
+    android:id="@+id/container"
+    android:background="@color/backround">
 
     <TextView
         android:id="@+id/tv_stazam"
@@ -59,8 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
-        android:text="Started"
-        android:visibility="gone"
+        android:text="Пропустить"
         app:cornerRadius="15dp"
         />
 
